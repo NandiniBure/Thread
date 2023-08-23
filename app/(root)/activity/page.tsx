@@ -2,7 +2,7 @@ import React from 'react'
 import {currentUser} from '@clerk/nextjs'
 import{redirect} from 'next/navigation'
 import Link from 'next/link'
-import { fetchUser, fetchUserPosts, fetchUsers, getAvtivity } from '@/lib/actions/user.actions'
+import { fetchUser, fetchUserPosts, fetchUsers, getActivity } from '@/lib/actions/user.actions'
 import Image from 'next/image'
 import UserCard from '@/components/cards/UserCard'
 const page = async() => {
@@ -13,7 +13,7 @@ if(!user) return null;
 const userInfo=await fetchUser(user.id)
 if(!userInfo?.onboarded) redirect('/onboarding')
 
-const activity= await getAvtivity(userInfo._id)
+const activity= await getActivity(userInfo._id)
   return (
     <section>
         <h1 className='head-text mb-10'>Activity</h1>

@@ -6,7 +6,7 @@ import Community from "../models/community.model";
 import Thread from "../models/thread.model";
 import User from "../models/user.model";
 
-import { connectToDB } from "../mongoose";
+import { connectToDB} from "../mongoose";
 
 export async function createCommunity(
   id: string,
@@ -18,10 +18,8 @@ export async function createCommunity(
 ) {
   try {
     connectToDB();
-
     // Find the user with the provided unique id
     const user = await User.findOne({ id: createdById });
-
     if (!user) {
       throw new Error("User not found"); // Handle the case if the user with the id is not found
     }

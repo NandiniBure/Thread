@@ -1,4 +1,6 @@
- /* eslint-disable camelcase */
+"use server"
+
+/* eslint-disable camelcase */
 // Resource: https://clerk.com/docs/users/sync-data-to-your-backend
 // Above article shows why we need webhooks i.e., to sync data to our backend
 
@@ -16,7 +18,7 @@ import {
   deleteCommunity,
   removeUserFromCommunity,
   updateCommunityInfo,
-} from "@/lib/actions/communtiy.actions"
+} from "@/lib/actions/communtiy.actions";
 
 // Resource: https://clerk.com/docs/integration/webhooks#supported-events
 // Above document lists the supported events
@@ -35,6 +37,7 @@ type Event = {
 };
 
 export const POST = async (request: Request) => {
+  console.log("hey")
   const payload = await request.json();
   const header = headers();
 

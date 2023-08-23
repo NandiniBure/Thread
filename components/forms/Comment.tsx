@@ -21,7 +21,7 @@ import { CommentValidation } from "@/lib/validations/thread"
 // import { UserValidation } from '@/lib/validations/user'
 // import { updateUser } from '@/lib/actions/user.actions'
 import {usePathname,useRouter} from 'next/navigation'
-import { AddcommentToThread } from "@/lib/actions/thread.actions"
+import { addCommentToThread} from "@/lib/actions/thread.actions"
 
 
 interface Props{
@@ -44,7 +44,7 @@ const form=useForm<z.infer<typeof CommentValidation>>(
 )
 
 const onSubmit=async(values: z.infer<typeof CommentValidation>)=>{
-  await AddcommentToThread(
+  await addCommentToThread(
 threadId,
 values.thread,
 JSON.parse(currentUserId),
